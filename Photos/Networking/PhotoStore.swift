@@ -13,21 +13,21 @@ public class PhotoStore {
     
     private init() {}
     
-    public func fetchListOfPhotos(completion: @escaping (Result<[Photo], Error>) -> Void) {
+    public func fetchListOfPhotos(completion: @escaping (Result<[Photo], PhotosError>) -> Void) {
         let url = UnsplashAPI.photosListURL()
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
+            if let _ = error {
+                completion(.failure(.unableToComplete))
                 return
             }
 
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(error!))
+                completion(.failure(.invalidResponse))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(error!))
+                completion(.failure(.invalidData))
                 return
             }
 
@@ -36,27 +36,27 @@ public class PhotoStore {
                 let photos = try jsonDecoder.decode([Photo].self, from: data)
                 completion(.success(photos))
             } catch {
-                completion(.failure(error))
+                completion(.failure(.invalidData))
             }
         }
         task.resume()
     }
     
-    public func searchPhotos(forTerm searchTerm: String, completion: @escaping (Result<[Photo], Error>) -> Void) {
+    public func searchPhotos(forTerm searchTerm: String, completion: @escaping (Result<[Photo], PhotosError>) -> Void) {
         let url = UnsplashAPI.photoSearchURL(forTerm: searchTerm)
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
+            if let _ = error {
+                completion(.failure(.unableToComplete))
                 return
             }
 
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(error!))
+                completion(.failure(.invalidResponse))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(error!))
+                completion(.failure(.invalidData))
                 return
             }
 
@@ -65,27 +65,27 @@ public class PhotoStore {
                 let photoSearchResult = try jsonDecoder.decode(PhotoSearchResult.self, from: data)
                 completion(.success(photoSearchResult.results))
             } catch {
-                completion(.failure(error))
+                completion(.failure(.invalidData))
             }
         }
         task.resume()
     }
     
-    public func fetchRandomPhoto(forTerm searchTerm: String? = nil, completion: @escaping (Result<Photo, Error>) -> Void) {
+    public func fetchRandomPhoto(forTerm searchTerm: String? = nil, completion: @escaping (Result<Photo, PhotosError>) -> Void) {
         let url = UnsplashAPI.randomPhotoURL(forTerm: searchTerm)
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
+            if let _ = error {
+                completion(.failure(.unableToComplete))
                 return
             }
 
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                completion(.failure(error!))
+                completion(.failure(.invalidResponse))
                 return
             }
 
             guard let data = data else {
-                completion(.failure(error!))
+                completion(.failure(.invalidData))
                 return
             }
 
@@ -94,7 +94,7 @@ public class PhotoStore {
                 let photo = try jsonDecoder.decode(Photo.self, from: data)
                 completion(.success(photo))
             } catch {
-                completion(.failure(error))
+                completion(.failure(.invalidData))
             }
         }
         task.resume()

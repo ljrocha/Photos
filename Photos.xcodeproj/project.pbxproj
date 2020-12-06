@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4636C25D257C7C7600F47933 /* PhotosError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4636C25C257C7C7600F47933 /* PhotosError.swift */; };
 		46ADDAF9257C4C670006720F /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46ADDAF8257C4C670006720F /* Private.swift */; };
 		46B391C1257C31C700BD19DC /* Photos.h in Headers */ = {isa = PBXBuildFile; fileRef = 46B391BF257C31C700BD19DC /* Photos.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		46B391CA257C31D900BD19DC /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46B391C9257C31D900BD19DC /* Photo.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4636C25C257C7C7600F47933 /* PhotosError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosError.swift; sourceTree = "<group>"; };
 		46ADDAF8257C4C670006720F /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
 		46B391BC257C31C700BD19DC /* Photos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Photos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		46B391BF257C31C700BD19DC /* Photos.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Photos.h; sourceTree = "<group>"; };
@@ -35,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4636C25B257C7C6200F47933 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4636C25C257C7C7600F47933 /* PhotosError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		46A95135257C5906009D4475 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +81,7 @@
 		46B391BE257C31C700BD19DC /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				4636C25B257C7C6200F47933 /* Utilities */,
 				46ADDAF8257C4C670006720F /* Private.swift */,
 				46A95135257C5906009D4475 /* Models */,
 				46A95136257C5911009D4475 /* Networking */,
@@ -162,6 +173,7 @@
 				46B391D0257C31E500BD19DC /* UnsplashAPI.swift in Sources */,
 				46B391CA257C31D900BD19DC /* Photo.swift in Sources */,
 				46ADDAF9257C4C670006720F /* Private.swift in Sources */,
+				4636C25D257C7C7600F47933 /* PhotosError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
