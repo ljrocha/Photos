@@ -21,7 +21,6 @@ xcuserdata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-Photos/Private.swift
 .DS_Store
 
 ## Obj-C/Swift specific
