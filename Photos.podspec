@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "Photos"
-  spec.version      = "1.0.0"
+  spec.version      = "1.0.2"
   spec.summary      = "A networking framework to fetch images from Unsplash API."
 
   spec.description  = "Fetch images using the Unsplash API. The images fetched are smaller in size and great for displaying them in a collection view."
